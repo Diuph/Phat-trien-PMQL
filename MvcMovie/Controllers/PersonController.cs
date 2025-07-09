@@ -1,15 +1,14 @@
-using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
 
-namespace MvcMovie.Controller
+namespace MvcMovie.Controllers
 {
     public class PersonController : Controller
     {
-        private readonly ApplicationDdContext_context;
-        public PersonController(ApplicationDdContext context)
+        private readonly ApplicationDbContext _context;
+        public PersonController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -70,15 +69,52 @@ namespace MvcMovie.Controller
                     {
                         return NotFound();
                     }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
+            return View(person);
         }
         public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null || _context.Person == null)
+            {
+                return NotFound();
+            }
+
+            var person = await _context.Person
+                .First0rDefaultAsync(m => m.PersonID == id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            return View(person);
+        }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            if (_context.Person == null)
+            {
+                return Problem("Entity set 'ApplicationDdcontext.Person' is null.");
+            }
+            var person = await _context.Person.FindAsync(id);
+            if (person != null)
+            {
+                _context.Person.Remove(person);
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
         private bool PersonExists(string id)
+        {
+
+            return (context.Person?.Any(e => e.PersonId == id)).GetValueOrDefault();
+        }
 
     }
 }
