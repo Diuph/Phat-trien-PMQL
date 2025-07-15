@@ -457,3 +457,5 @@ C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\ru\Microsoft.Co
 C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\Admin\Documents\PhattrienPMQL\MvcMovie\bin\Debug\net9.0\System.Text.Json.dll
