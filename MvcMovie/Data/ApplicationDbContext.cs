@@ -11,5 +11,6 @@ namespace MvcMovie.Data
         { }
 
         public DbSet<Person> Person { get; set; }
+        public DbSet<MvcMovie.Models.NhanVien> NhanVien { get; set; } = default!;
     }
 }
